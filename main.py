@@ -39,5 +39,16 @@ class TestesTDD(unittest.TestCase):
         self.assertTrue(william in empresa_W.funcionarios)
         self.assertTrue(tiago in empresa_W.funcionarios)
 
+    def test_inclui_funcionario_repetido_na_empresa(self):
+            empresa_W = Empresa("W")
+
+            william = Funcionario("William Kraus")
+            william2 = Funcionario("William Kraus")
+
+            empresa_W.adiciona_funcionario(william)
+            with self.assertRaises(ErroFuncionarioRepetido):
+                empresa_W.adiciona_funcionario(william2)
+
+
 if __name__ == "__main__":
     unittest.main()
