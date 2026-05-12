@@ -3,7 +3,10 @@
 import unittest
 
 class TestesTDD(unittest.TestCase):
-    pass
+
+    def test_cria_empresa(self):
+        empresa_W = Empresa("W")
+        self.assertEqual(empresa_W.nome, "W")
 
 if __name__ == "__main__":
     unittest.main()
