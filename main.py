@@ -3,6 +3,7 @@
 import unittest
 
 from empresa import Empresa
+from funcionario import Funcionario
 
 class TestesTDD(unittest.TestCase):
 
