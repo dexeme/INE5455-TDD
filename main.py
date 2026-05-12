@@ -2,7 +2,7 @@
 
 import unittest
 
-from empresa import Empresa
+from empresa import Empresa, ErroFuncionarioRepetido
 from funcionario import Funcionario
 
 class TestesTDD(unittest.TestCase):

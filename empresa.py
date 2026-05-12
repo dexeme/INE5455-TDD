@@ -12,4 +12,10 @@ class Empresa():
         self.funcionarios = []
 
     def adiciona_funcionario(self, funcionario: Funcionario):
+        if funcionario in self.funcionarios:
+            raise ErroFuncionarioRepetido(f"{funcionario.nome} já está na lista de funcionários da empresa {self.nome}.")
         self.funcionarios.append(funcionario)
+
+
+class ErroFuncionarioRepetido(Exception):
+    pass
