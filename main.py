@@ -49,6 +49,9 @@ class TestesTDD(unittest.TestCase):
             with self.assertRaises(ErroFuncionarioRepetido):
                 empresa_W.adiciona_funcionario(william2)
 
+    def test_cria_projeto_valido(self):
+        projeto = Projeto("Projeto Legal")
+        self.assertTrue(projeto.nome, "Projeto Legal")
 
 if __name__ == "__main__":
     unittest.main()
