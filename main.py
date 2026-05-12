@@ -27,5 +27,17 @@ class TestesTDD(unittest.TestCase):
         with self.assertRaises(ValueError):
             Funcionario("")
 
+    def test_inclui_dois_funcionarios_na_empresa(self):
+        empresa_W = Empresa("W")
+
+        william = Funcionario("William Kraus")
+        tiago = Funcionario("Tiago Siqueira")
+
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.adiciona_funcionario(tiago)
+
+        self.assertTrue(william in empresa_W.funcionarios)
+        self.assertTrue(tiago in empresa_W.funcionarios)
+
 if __name__ == "__main__":
     unittest.main()
