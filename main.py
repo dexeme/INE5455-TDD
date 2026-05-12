@@ -23,6 +23,9 @@ class TestesTDD(unittest.TestCase):
 
         self.assertTrue(william in empresa_W.funcionarios)
 
+    def test_cria_funcionario_nome_vazio(self):
+        with self.assertRaises(ValueError):
+            Funcionario("")
 
 if __name__ == "__main__":
     unittest.main()
