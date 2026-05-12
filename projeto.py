@@ -14,6 +14,8 @@ class Projeto:
         self.membros = []
 
     def vincula_funcionario(self, funcionario: Funcionario):
+        if funcionario in self.membros:
+            raise ErroMembroRepetido(f"{funcionario.nome} já está na lista de membros do projeto {self.nome}.")
         self.membros.append(funcionario)
 
     def __hash__(self):
@@ -21,3 +23,6 @@ class Projeto:
 
     def __eq__(self, other):
         return self.nome == other.nome
+
+class ErroMembroRepetido(Exception):
+    pass
