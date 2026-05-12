@@ -2,6 +2,8 @@
 
 import unittest
 
+from empresa import Empresa
+
 class TestesTDD(unittest.TestCase):
 
     def test_cria_empresa(self):
