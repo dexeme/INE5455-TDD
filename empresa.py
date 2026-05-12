@@ -25,6 +25,10 @@ class Empresa():
             raise ErroProjetoRepetido(f"{projeto.nome} já está na lista de projetos da empresa {self.nome}.")
         self.projetos.append(projeto)
 
+    def vincula_funcionario(self, funcionario: Funcionario, projeto: Projeto):
+        projeto.vincula_funcionario(funcionario)
+
+
 class ErroFuncionarioRepetido(Exception):
     pass
 
