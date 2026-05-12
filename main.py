@@ -59,5 +59,12 @@ class TestesTDD(unittest.TestCase):
         with self.assertRaises(ValueError):
             Projeto("")
 
+    def test_inclui_projeto_na_empresa(self):
+        empresa_W = Empresa("W")
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+        self.assertTrue(projeto in empresa_W.projetos)
+
+
 if __name__ == "__main__":
     unittest.main()
