@@ -55,5 +55,9 @@ class TestesTDD(unittest.TestCase):
         projeto = Projeto("Projeto Legal")
         self.assertTrue(projeto.nome, "Projeto Legal")
 
+    def test_cria_projeto_nome_vazio(self):
+        with self.assertRaises(ValueError):
+            Projeto("")
+
 if __name__ == "__main__":
     unittest.main()
