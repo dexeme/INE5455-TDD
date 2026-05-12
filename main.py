@@ -10,5 +10,9 @@ class TestesTDD(unittest.TestCase):
         empresa_W = Empresa("W")
         self.assertEqual(empresa_W.nome, "W")
 
+    def test_cria_empresa_nome_vazio(self):
+        with self.assertRaises(ValueError):
+            Empresa("")
+
 if __name__ == "__main__":
     unittest.main()
