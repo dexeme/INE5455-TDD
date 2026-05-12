@@ -21,9 +21,12 @@ class Empresa():
         self.funcionarios.append(funcionario)
 
     def adiciona_projeto(self, projeto: Projeto):
-        if projeto in self.funcionarios:
+        if projeto in self.projetos:
             raise ErroProjetoRepetido(f"{projeto.nome} já está na lista de projetos da empresa {self.nome}.")
         self.projetos.append(projeto)
 
 class ErroFuncionarioRepetido(Exception):
+    pass
+
+class ErroProjetoRepetido(Exception):
     pass
