@@ -92,6 +92,9 @@ class TestesTDD(unittest.TestCase):
 
         empresa_W.vincula_funcionario(william, projeto)
 
+        self.assertTrue(william in projeto.membros)
+        self.assertTrue(len(projeto.membros) == 1)
+
     def test_inclui_funcionario_repetido_em_um_projeto_da_empresa(self):
         empresa_W = Empresa("W")
 
@@ -106,6 +109,9 @@ class TestesTDD(unittest.TestCase):
 
         with self.assertRaises(ErroMembroRepetido):
             empresa_W.vincula_funcionario(william2, projeto)
+        
+        self.assertTrue(william in projeto.membros)
+        self.assertTrue(len(projeto.membros) == 1)
 
 
 if __name__ == "__main__":
