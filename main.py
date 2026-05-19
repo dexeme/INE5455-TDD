@@ -67,7 +67,9 @@ class TestesTDD(unittest.TestCase):
         empresa_W = Empresa("W")
         projeto = Projeto("Projeto Legal")
         empresa_W.adiciona_projeto(projeto)
+
         self.assertTrue(projeto in empresa_W.projetos)
+        self.assertTrue(len(empresa_W.projetos) == 1)
 
     def test_inclui_projeto_repetido_na_empresa(self):
         empresa_W = Empresa("W")
@@ -78,6 +80,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.adiciona_projeto(projeto)
         with self.assertRaises(ErroProjetoRepetido):
             empresa_W.adiciona_projeto(projeto2)
+        self.assertTrue(len(empresa_W.projetos) == 1)
 
     def test_inclui_funcionario_em_um_projeto_da_empresa(self):
         empresa_W = Empresa("W")
