@@ -24,6 +24,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.adiciona_funcionario(william)
 
         self.assertTrue(william in empresa_W.funcionarios)
+        self.assertTrue(len(empresa_W.funcionarios) == 1)
 
     def test_cria_funcionario_nome_vazio(self):
         with self.assertRaises(ValueError):
@@ -40,6 +41,7 @@ class TestesTDD(unittest.TestCase):
 
         self.assertTrue(william in empresa_W.funcionarios)
         self.assertTrue(tiago in empresa_W.funcionarios)
+        self.assertTrue(len(empresa_W.funcionarios) == 2)
 
     def test_inclui_funcionario_repetido_na_empresa(self):
             empresa_W = Empresa("W")
@@ -50,6 +52,8 @@ class TestesTDD(unittest.TestCase):
             empresa_W.adiciona_funcionario(william)
             with self.assertRaises(ErroFuncionarioRepetido):
                 empresa_W.adiciona_funcionario(william2)
+
+            self.assertTrue(len(empresa_W.funcionarios) == 1)
 
     def test_cria_projeto_valido(self):
         projeto = Projeto("Projeto Legal")
