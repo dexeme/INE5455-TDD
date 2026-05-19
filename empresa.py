@@ -30,6 +30,8 @@ class Empresa():
     def vincula_funcionario(self, funcionario: Funcionario, projeto: Projeto):
         if funcionario not in self.funcionarios:
             raise ErroFuncionarioInvalido(f"{funcionario.nome} não está na empresa.")
+        if projeto not in self.projetos:
+            raise ErroProjetoInvalido(f"{projeto.nome} não é da empresa.")
         projeto.vincula_funcionario(funcionario)
 
 class ErroFuncionarioInvalido(Exception):
@@ -39,4 +41,7 @@ class ErroFuncionarioRepetido(Exception):
     pass
 
 class ErroProjetoRepetido(Exception):
+    pass
+
+class ErroProjetoInvalido(Exception):
     pass
