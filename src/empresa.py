@@ -1,7 +1,7 @@
 # Alunos: Tiago Faustino de Siqueira e William Kraus
 
-from funcionario import Funcionario
-from projeto import Projeto
+from src.funcionario import Funcionario
+from src.projeto import Projeto
 
 
 class Empresa():
