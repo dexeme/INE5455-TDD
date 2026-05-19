@@ -28,8 +28,12 @@ class Empresa():
         self.projetos.append(projeto)
 
     def vincula_funcionario(self, funcionario: Funcionario, projeto: Projeto):
+        if funcionario not in self.funcionarios:
+            raise ErroFuncionarioInvalido(f"{funcionario.nome} não está na empresa.")
         projeto.vincula_funcionario(funcionario)
 
+class ErroFuncionarioInvalido(Exception):
+    pass
 
 class ErroFuncionarioRepetido(Exception):
     pass

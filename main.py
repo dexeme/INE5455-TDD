@@ -2,7 +2,7 @@
 
 import unittest
 
-from empresa import Empresa, ErroFuncionarioRepetido, ErroProjetoRepetido
+from empresa import Empresa, ErroFuncionarioInvalido, ErroFuncionarioRepetido, ErroProjetoRepetido
 from funcionario import Funcionario
 from projeto import Projeto, ErroMembroRepetido
 
