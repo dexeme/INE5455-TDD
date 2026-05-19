@@ -124,6 +124,19 @@ class TestesTDD(unittest.TestCase):
             empresa_W.vincula_funcionario(william, projeto)
         self.assertTrue(len(projeto.membros) == 0)
         self.assertTrue(william not in projeto.membros)
+
+    def test_inclui_funcionario_em_um_projeto_que_nao_eh_da_empresa(self):
+        empresa_W = Empresa("W")
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        
+        projeto = Projeto("Projeto Legal")
+
+        with self.assertRaises(ErroProjetoInvalido):
+            empresa_W.vincula_funcionario(william, projeto)
+        self.assertTrue(len(projeto.membros) == 0)
+        self.assertTrue(william not in projeto.membros)
     
 if __name__ == "__main__":
     unittest.main()
