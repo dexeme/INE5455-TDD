@@ -19,9 +19,6 @@ class Projeto:
             raise ErroMembroRepetido(f"{funcionario.nome} já está na lista de membros do projeto {self.nome}.")
         self.membros.append(funcionario)
 
-    def __hash__(self):
-        return hash(self.nome)
-
     def __eq__(self, other):
         return self.nome == other.nome
 
