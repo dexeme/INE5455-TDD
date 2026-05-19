@@ -1,3 +1,4 @@
+# Alunos: Tiago Faustino de Siqueira e William Kraus
 
 class Funcionario:
     nome: str

@@ -1,5 +1,6 @@
-from funcionario import Funcionario
+# Alunos: Tiago Faustino de Siqueira e William Kraus
 
+from funcionario import Funcionario
 
 
 class Projeto:

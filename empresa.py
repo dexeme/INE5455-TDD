@@ -1,3 +1,5 @@
+# Alunos: Tiago Faustino de Siqueira e William Kraus
+
 from funcionario import Funcionario
 from projeto import Projeto
 
