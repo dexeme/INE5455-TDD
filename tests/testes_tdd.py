@@ -146,6 +146,7 @@ class TestesTDD(unittest.TestCase):
 
         william = Funcionario("William Kraus")
         empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
             resumo="Implementação do sistema de ocorrências",
@@ -163,6 +164,7 @@ class TestesTDD(unittest.TestCase):
 
         william = Funcionario("William Kraus")
         empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia_1 = projeto.cria_ocorrencia(
             resumo="Implementação do sistema de ocorrências",
