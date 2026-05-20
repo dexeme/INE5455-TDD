@@ -150,6 +150,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -168,14 +169,17 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia_1 = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
         ocorrencia_2 = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Bug,
             resumo="Arruma bug de inserção de ocorrências na empresa.",
             responsavel=william
         )
         ocorrencia_3 = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Refatoracao,
             resumo="Refatora sistema de ocorrências.",
             responsavel=william
         )
@@ -195,6 +199,7 @@ class TestesTDD(unittest.TestCase):
 
         with self.assertRaises(ErroMembroInvalido):
             projeto.cria_ocorrencia(
+                tipo=TipoOcorrencia.Tarefa,
                 resumo="Implementação do sistema de ocorrências",
                 responsavel=william
             )
@@ -212,6 +217,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(william, projeto)
         
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -229,6 +235,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -252,6 +259,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(tiago, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -274,6 +282,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.adiciona_funcionario(tiago)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -298,6 +307,7 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(tiago, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william
         )
@@ -320,9 +330,9 @@ class TestesTDD(unittest.TestCase):
         empresa_W.vincula_funcionario(william, projeto)
 
         ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
             resumo="Implementação do sistema de ocorrências",
             responsavel=william,
-            tipo=TipoOcorrencia.Tarefa,
         )
 
         self.assertEqual(ocorrencia.tipo, TipoOcorrencia.Tarefa)
