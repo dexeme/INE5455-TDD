@@ -355,3 +355,27 @@ class TestesTDD(unittest.TestCase):
         )
 
         self.assertEqual(ocorrencia.prioridade, PrioridadeOcorrencia.Alta)
+
+    def test_muda_prioridade_de_ocorrencia(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            tipo=TipoOcorrencia.Tarefa,
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william,
+            prioridade=PrioridadeOcorrencia.Baixa,
+        )
+
+        prioridade_anterior = ocorrencia.prioridade
+
+        ocorrencia.muda_prioridade(PrioridadeOcorrencia.Alta)
+
+        self.assertEqual(prioridade_anterior, PrioridadeOcorrencia.Baixa)
+        self.assertEqual(ocorrencia.prioridade, PrioridadeOcorrencia.Alta)
