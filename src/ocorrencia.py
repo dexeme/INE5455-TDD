@@ -6,6 +6,11 @@ class EstadoOcorrencia(Enum):
     Aberta = 0
     Fechada = 1
 
+class TipoOcorrencia(Enum):
+    Tarefa = 0
+    Bug = 1
+    Refatoracao = 2
+
 class ErroMembroInvalido(Exception):
     pass
 
@@ -14,15 +19,17 @@ class ErroOcorrenciaFechada(Exception):
 
 class Ocorrencia:
     chave: int
+    tipo: TipoOcorrencia
     resumo: str
     responsavel: Funcionario
     estado: EstadoOcorrencia
     
-    def __init__(self, projeto, chave: int, resumo: str):
+    def __init__(self, projeto, chave: int, tipo: TipoOcorrencia, resumo: str):
         self._projeto = projeto
         self.chave = chave
         self.resumo = resumo
         self.estado = EstadoOcorrencia.Aberta
+        self.tipo = tipo
     
     def __eq__(self, other):
         return self.chave == other.chave
