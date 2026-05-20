@@ -1,5 +1,7 @@
 # Alunos: Tiago Faustino de Siqueira e William Kraus
 
+from uuid import uuid4
+
 from src.funcionario import Funcionario
 from src.ocorrencia import Ocorrencia, PrioridadeOcorrencia, TipoOcorrencia
 
@@ -8,7 +10,6 @@ class Projeto:
     nome: str
     membros: list
     ocorrencias: list[Ocorrencia]
-    proxima_chave_de_ocorrencia: int
 
     def __init__(self, nome: str):
         nome = nome.strip()
@@ -17,7 +18,6 @@ class Projeto:
         self.nome = nome
         self.membros = []
         self.ocorrencias = []
-        self.proxima_chave_de_ocorrencia = 0
 
     def vincula_funcionario(self, funcionario: Funcionario):
         if funcionario in self.membros:
@@ -31,9 +31,7 @@ class Projeto:
         responsavel: Funcionario,
         prioridade: PrioridadeOcorrencia = PrioridadeOcorrencia.Media
     ):
-        chave = self.proxima_chave_de_ocorrencia
-        self.proxima_chave_de_ocorrencia += 1
-
+        chave = uuid4().hex
         ocorrencia = Ocorrencia(self, chave, tipo, resumo)
         ocorrencia.muda_responsavel(responsavel)
         ocorrencia.muda_prioridade(prioridade)

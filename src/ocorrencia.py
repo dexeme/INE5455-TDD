@@ -25,14 +25,14 @@ class ErroOcorrenciaFechada(Exception):
     pass
 
 class Ocorrencia:
-    chave: int
+    chave: str
     tipo: TipoOcorrencia
     resumo: str
     responsavel: Funcionario
     estado: EstadoOcorrencia
     prioridade: PrioridadeOcorrencia
     
-    def __init__(self, projeto, chave: int, tipo: TipoOcorrencia, resumo: str):
+    def __init__(self, projeto, chave: str, tipo: TipoOcorrencia, resumo: str):
         self._projeto = projeto
         self.chave = chave
         self.resumo = resumo
