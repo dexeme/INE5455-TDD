@@ -23,3 +23,5 @@ class Ocorrencia:
     def fecha(self):
         self.estado = EstadoOcorrencia.Fechada
 
+    def muda_responsavel(self, responsavel: Funcionario):
+        self.responsavel = responsavel
