@@ -200,3 +200,19 @@ class TestesTDD(unittest.TestCase):
 
         self.assertTrue(len(projeto.ocorrencias) == 0)
 
+    def test_ocorrencia_no_estado_aberta_ao_criar(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+        
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+
+        self.assertEqual(ocorrencia.estado, EstadoOcorrencia.Aberta)
