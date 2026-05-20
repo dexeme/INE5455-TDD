@@ -1,6 +1,6 @@
 from enum import Enum
 
-from src.funcionario import Funcionario
+from src.funcionario import ErroFuncionarioSobrecarregado, Funcionario
 
 class EstadoOcorrencia(Enum):
     Aberta = 0
@@ -38,6 +38,7 @@ class Ocorrencia:
         self.resumo = resumo
         self.estado = EstadoOcorrencia.Aberta
         self.tipo = tipo
+        self.responsavel = None
     
     def __eq__(self, other):
         return self.chave == other.chave
@@ -45,11 +46,25 @@ class Ocorrencia:
     def fecha(self):
         self.estado = EstadoOcorrencia.Fechada
 
+        if self in self.responsavel.ocorrencias_abertas:
+            self.responsavel.ocorrencias_abertas.remove(self)
+
     def muda_responsavel(self, responsavel: Funcionario):
         if responsavel not in self._projeto.membros:
             raise ErroMembroInvalido(f"{responsavel.nome} não está na lista de membros do projeto {self._projeto.nome}.")
         if self.estado == EstadoOcorrencia.Fechada:
             raise ErroOcorrenciaFechada(f"A ocorrência {self.chave} está fechada.")
+        
+        if len(responsavel.ocorrencias_abertas) >= 10:
+            raise ErroFuncionarioSobrecarregado(f"{responsavel.nome} já é responsável por 10 ocorrências abertas.")
+        
+        
+        if self.responsavel and self in self.responsavel.ocorrencias_abertas:
+            self.responsavel.ocorrencias_abertas.remove(self)
+        
+        if self not in responsavel.ocorrencias_abertas:
+            responsavel.ocorrencias_abertas.append(self)
+
         self.responsavel = responsavel
     
     def muda_prioridade(self, prioridade: PrioridadeOcorrencia):

@@ -4,7 +4,7 @@ import unittest
 
 from src.ocorrencia import ErroOcorrenciaFechada, EstadoOcorrencia, ErroMembroInvalido, PrioridadeOcorrencia, TipoOcorrencia
 from src.empresa import Empresa, ErroFuncionarioInvalido, ErroFuncionarioRepetido, ErroProjetoInvalido, ErroProjetoRepetido
-from src.funcionario import Funcionario
+from src.funcionario import ErroFuncionarioSobrecarregado, Funcionario
 from src.projeto import Projeto, ErroMembroRepetido
 
 
