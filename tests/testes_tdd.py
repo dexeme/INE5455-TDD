@@ -4,7 +4,7 @@ import unittest
 
 from src.empresa import Empresa, ErroFuncionarioInvalido, ErroFuncionarioRepetido, ErroProjetoInvalido, ErroProjetoRepetido
 from src.funcionario import Funcionario
-from src.projeto import Projeto, ErroMembroRepetido
+from src.projeto import ErroMembroInvalido, Projeto, ErroMembroRepetido
 
 
 class TestesTDD(unittest.TestCase):
