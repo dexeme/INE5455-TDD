@@ -53,4 +53,6 @@ class Ocorrencia:
         self.responsavel = responsavel
     
     def muda_prioridade(self, prioridade: PrioridadeOcorrencia):
+        if self.estado == EstadoOcorrencia.Fechada:
+            raise ErroOcorrenciaFechada(f"A ocorrência {self.chave} está fechada.")
         self.prioridade = prioridade
