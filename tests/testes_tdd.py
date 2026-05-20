@@ -308,3 +308,21 @@ class TestesTDD(unittest.TestCase):
             ocorrencia.muda_responsavel(tiago)
 
         self.assertEqual(ocorrencia.responsavel, william)
+
+    def test_verifica_tipo_de_ocorrencia(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william,
+            tipo=TipoOcorrencia.Tarefa,
+        )
+
+        self.assertEqual(ocorrencia.tipo, TipoOcorrencia.Tarefa)
