@@ -180,3 +180,21 @@ class TestesTDD(unittest.TestCase):
         self.assertTrue(ocorrencia_1.chave != ocorrencia_2.chave)
         self.assertTrue(ocorrencia_2.chave != ocorrencia_3.chave)
         self.assertTrue(ocorrencia_1.chave != ocorrencia_3.chave)
+
+    def test_inclui_ocorrencia_a_projeto_com_funcionario_fora_do_projeto(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+
+        with self.assertRaises(ErroMembroInvalido):
+            projeto.cria_ocorrencia(
+                resumo="Implementação do sistema de ocorrências",
+                responsavel=william
+            )
+
+        self.assertTrue(len(projeto.ocorrencias) == 0)
+
