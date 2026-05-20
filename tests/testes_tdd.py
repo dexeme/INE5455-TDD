@@ -404,3 +404,26 @@ class TestesTDD(unittest.TestCase):
             ocorrencia.muda_prioridade(PrioridadeOcorrencia.Alta)
 
         self.assertEqual(ocorrencia.prioridade, PrioridadeOcorrencia.Baixa)
+
+    def test_inclui_funcionario_em_multiplas_ocorrencias_em_um_projeto(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        for _ in range(10):
+            projeto.cria_ocorrencia(
+                tipo=TipoOcorrencia.Tarefa,
+                resumo="Implementação do sistema de ocorrências",
+                responsavel=william,
+            )
+        with self.assertRaises(ErroFuncionarioSobrecarregado):
+            projeto.cria_ocorrencia(
+                tipo=TipoOcorrencia.Tarefa,
+                resumo="Implementação do sistema de ocorrências",
+                responsavel=william,
+            )
