@@ -427,3 +427,46 @@ class TestesTDD(unittest.TestCase):
                 resumo="Implementação do sistema de ocorrências",
                 responsavel=william,
             )
+
+    def test_inclui_funcionario_em_multiplas_ocorrencias_de_multiplos_projetos(self):
+        empresa_W = Empresa("W")
+
+        projeto_legal = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto_legal)
+
+        projeto_bacana = Projeto("Projeto Bacana")
+        empresa_W.adiciona_projeto(projeto_bacana)
+
+        projeto_interessante = Projeto("Projeto Interessante")
+        empresa_W.adiciona_projeto(projeto_interessante)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto_legal)
+        empresa_W.vincula_funcionario(william, projeto_bacana)
+        empresa_W.vincula_funcionario(william, projeto_interessante)
+
+        for i in range(3):
+            projeto_legal.cria_ocorrencia(
+                tipo=TipoOcorrencia.Tarefa,
+                resumo=f"Implementação do sistema de ocorrências {i}",
+                responsavel=william,
+            )
+        for i in range(2):
+            projeto_bacana.cria_ocorrencia(
+                tipo=TipoOcorrencia.Bug,
+                resumo=f"Arruma bug de inserção de ocorrências na empresa {i}",
+                responsavel=william,
+            )
+        for i in range(5):
+            projeto_interessante.cria_ocorrencia(
+                tipo=TipoOcorrencia.Refatoracao,
+                resumo=f"Refatora sistema de ocorrências {i}",
+                responsavel=william,
+            )
+        with self.assertRaises(ErroFuncionarioSobrecarregado):
+            projeto_bacana.cria_ocorrencia(
+                tipo=TipoOcorrencia.Tarefa,
+                resumo=f"Implementação do sistema de ocorrências",
+                responsavel=william,
+            )
