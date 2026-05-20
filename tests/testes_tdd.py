@@ -217,3 +217,22 @@ class TestesTDD(unittest.TestCase):
         )
 
         self.assertEqual(ocorrencia.estado, EstadoOcorrencia.Aberta)
+
+    def test_ocorrencia_no_estado_fechada_ao_fechar(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+
+        ocorrencia.fecha()
+
+        self.assertEqual(ocorrencia.estado, EstadoOcorrencia.Fechada)
