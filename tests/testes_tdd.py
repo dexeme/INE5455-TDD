@@ -137,3 +137,46 @@ class TestesTDD(unittest.TestCase):
             empresa_W.vincula_funcionario(william, projeto)
         self.assertTrue(len(projeto.membros) == 0)
         self.assertTrue(william not in projeto.membros)
+
+    def test_inclui_ocorrencia_a_projeto(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+
+        self.assertTrue(ocorrencia in projeto.ocorrencias)
+        self.assertTrue(len(projeto.ocorrencias) == 1)
+
+    def test_valida_unicidade_de_chaves_de_ocorrencias(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+
+        ocorrencia_1 = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+        ocorrencia_2 = projeto.cria_ocorrencia(
+            resumo="Arruma bug de inserção de ocorrências na empresa.",
+            responsavel=william
+        )
+        ocorrencia_3 = projeto.cria_ocorrencia(
+            resumo="Refatora sistema de ocorrências.",
+            responsavel=william
+        )
+
+        self.assertTrue(ocorrencia_1.chave != ocorrencia_2.chave)
+        self.assertTrue(ocorrencia_2.chave != ocorrencia_3.chave)
+        self.assertTrue(ocorrencia_1.chave != ocorrencia_3.chave)
