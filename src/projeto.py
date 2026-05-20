@@ -1,7 +1,7 @@
 # Alunos: Tiago Faustino de Siqueira e William Kraus
 
 from src.funcionario import Funcionario
-from src.ocorrencia import Ocorrencia, TipoOcorrencia
+from src.ocorrencia import Ocorrencia, PrioridadeOcorrencia, TipoOcorrencia
 
 
 class Projeto:
@@ -24,12 +24,19 @@ class Projeto:
             raise ErroMembroRepetido(f"{funcionario.nome} já está na lista de membros do projeto {self.nome}.")
         self.membros.append(funcionario)
 
-    def cria_ocorrencia(self, tipo: TipoOcorrencia, resumo: str, responsavel: Funcionario):
+    def cria_ocorrencia(
+        self,
+        tipo: TipoOcorrencia,
+        resumo: str,
+        responsavel: Funcionario,
+        prioridade: PrioridadeOcorrencia = PrioridadeOcorrencia.Media
+    ):
         chave = self.proxima_chave_de_ocorrencia
         self.proxima_chave_de_ocorrencia += 1
 
         ocorrencia = Ocorrencia(self, chave, tipo, resumo)
         ocorrencia.muda_responsavel(responsavel)
+        ocorrencia.muda_prioridade(prioridade)
         self.ocorrencias.append(ocorrencia)
 
         return ocorrencia

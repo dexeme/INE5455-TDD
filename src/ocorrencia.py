@@ -11,6 +11,13 @@ class TipoOcorrencia(Enum):
     Bug = 1
     Refatoracao = 2
 
+
+class PrioridadeOcorrencia(Enum):
+    Baixa = 0
+    Media = 1
+    Alta = 2
+
+
 class ErroMembroInvalido(Exception):
     pass
 
@@ -23,6 +30,7 @@ class Ocorrencia:
     resumo: str
     responsavel: Funcionario
     estado: EstadoOcorrencia
+    prioridade: PrioridadeOcorrencia
     
     def __init__(self, projeto, chave: int, tipo: TipoOcorrencia, resumo: str):
         self._projeto = projeto
@@ -43,3 +51,6 @@ class Ocorrencia:
         if self.estado == EstadoOcorrencia.Fechada:
             raise ErroOcorrenciaFechada(f"A ocorrência {self.chave} está fechada.")
         self.responsavel = responsavel
+    
+    def muda_prioridade(self, prioridade: PrioridadeOcorrencia):
+        self.prioridade = prioridade
