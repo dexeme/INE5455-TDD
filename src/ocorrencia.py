@@ -9,6 +9,9 @@ class EstadoOcorrencia(Enum):
 class ErroMembroInvalido(Exception):
     pass
 
+class ErroOcorrenciaFechada(Exception):
+    pass
+
 class Ocorrencia:
     chave: int
     resumo: str
@@ -30,4 +33,6 @@ class Ocorrencia:
     def muda_responsavel(self, responsavel: Funcionario):
         if responsavel not in self._projeto.membros:
             raise ErroMembroInvalido(f"{responsavel.nome} não está na lista de membros do projeto {self._projeto.nome}.")
+        if self.estado == EstadoOcorrencia.Fechada:
+            raise ErroOcorrenciaFechada(f"A ocorrência {self.chave} está fechada.")
         self.responsavel = responsavel

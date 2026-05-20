@@ -2,7 +2,7 @@
 
 import unittest
 
-from src.ocorrencia import EstadoOcorrencia, ErroMembroInvalido
+from src.ocorrencia import ErroOcorrenciaFechada, EstadoOcorrencia, ErroMembroInvalido
 from src.empresa import Empresa, ErroFuncionarioInvalido, ErroFuncionarioRepetido, ErroProjetoInvalido, ErroProjetoRepetido
 from src.funcionario import Funcionario
 from src.projeto import Projeto, ErroMembroRepetido
