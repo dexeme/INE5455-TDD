@@ -19,3 +19,7 @@ class Ocorrencia:
     
     def __eq__(self, other):
         return self.chave == other.chave
+    
+    def fecha(self):
+        self.estado = EstadoOcorrencia.Fechada
+
