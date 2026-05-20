@@ -28,11 +28,8 @@ class Projeto:
         chave = self.proxima_chave_de_ocorrencia
         self.proxima_chave_de_ocorrencia += 1
 
-        if responsavel not in self.membros:
-            raise ErroMembroInvalido(f"{responsavel.nome} não está na lista de membros do projeto {self.nome}.")
-
-        ocorrencia = Ocorrencia(chave, resumo)
-        ocorrencia.responsavel = responsavel
+        ocorrencia = Ocorrencia(self, chave, resumo)
+        ocorrencia.muda_responsavel(responsavel)
         self.ocorrencias.append(ocorrencia)
 
         return ocorrencia
@@ -41,7 +38,4 @@ class Projeto:
         return self.nome == other.nome
 
 class ErroMembroRepetido(Exception):
-    pass
-
-class ErroMembroInvalido(Exception):
     pass

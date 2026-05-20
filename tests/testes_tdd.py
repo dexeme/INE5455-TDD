@@ -2,10 +2,10 @@
 
 import unittest
 
-from src.ocorrencia import EstadoOcorrencia
+from src.ocorrencia import EstadoOcorrencia, ErroMembroInvalido
 from src.empresa import Empresa, ErroFuncionarioInvalido, ErroFuncionarioRepetido, ErroProjetoInvalido, ErroProjetoRepetido
 from src.funcionario import Funcionario
-from src.projeto import ErroMembroInvalido, Projeto, ErroMembroRepetido
+from src.projeto import Projeto, ErroMembroRepetido
 
 
 class TestesTDD(unittest.TestCase):
