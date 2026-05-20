@@ -259,3 +259,26 @@ class TestesTDD(unittest.TestCase):
         ocorrencia.muda_responsavel(tiago)
 
         self.assertEqual(ocorrencia.responsavel, tiago)
+
+    def test_muda_responsavel_de_ocorrencia_para_membro_invalido(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        tiago = Funcionario("Tiago Siqueira")
+        empresa_W.adiciona_funcionario(tiago)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+
+        with self.assertRaises(ErroMembroInvalido):
+            ocorrencia.muda_responsavel(tiago)
+
+        self.assertEqual(ocorrencia.responsavel, william)
