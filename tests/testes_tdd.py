@@ -282,3 +282,29 @@ class TestesTDD(unittest.TestCase):
             ocorrencia.muda_responsavel(tiago)
 
         self.assertEqual(ocorrencia.responsavel, william)
+
+    def test_muda_responsavel_de_ocorrencia_fechada(self):
+        empresa_W = Empresa("W")
+
+        projeto = Projeto("Projeto Legal")
+        empresa_W.adiciona_projeto(projeto)
+
+        william = Funcionario("William Kraus")
+        empresa_W.adiciona_funcionario(william)
+        empresa_W.vincula_funcionario(william, projeto)
+
+        tiago = Funcionario("Tiago Siqueira")
+        empresa_W.adiciona_funcionario(tiago)
+        empresa_W.vincula_funcionario(tiago, projeto)
+
+        ocorrencia = projeto.cria_ocorrencia(
+            resumo="Implementação do sistema de ocorrências",
+            responsavel=william
+        )
+
+        ocorrencia.fecha()
+
+        with self.assertRaises(ErroOcorrenciaFechada):
+            ocorrencia.muda_responsavel(tiago)
+
+        self.assertEqual(ocorrencia.responsavel, william)
