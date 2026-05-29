@@ -1,3 +1,5 @@
+# Alunos: Tiago Faustino de Siqueira e William Kraus
+
 from enum import Enum
 
 from src.funcionario import ErroFuncionarioSobrecarregado, Funcionario
